@@ -57,9 +57,10 @@ export default {
 <style>
 .button {
         display: inline-block;
+		width: 100%;
         padding: 10px;
         border-radius: 3px;
-        margin: 10px;
+        margin: 5px auto;
         font-size: 1.2em;
 		cursor: pointer;
     }

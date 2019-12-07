@@ -13,8 +13,18 @@ export const routes = [
     component: Home
   },
   {
+    path: '*',
+    name: 'fallback',
+    component: Home
+  },
+  {
     path: '/cadastro',
     name: 'cadastro',
+    component: Cadastro
+  },
+  {
+    path: '/cadastro/:id',
+    name: 'alterar',
     component: Cadastro
   },
   {

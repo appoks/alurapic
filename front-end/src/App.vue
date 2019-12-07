@@ -65,6 +65,7 @@ main {
 	flex: 1 0 auto;
   display : inline-flex;
   flex-direction: column;
+  background-color:floralwhite;
 }
 
 main a {

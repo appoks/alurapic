@@ -19,7 +19,7 @@ export default {
 
     methods: {
         fireEvent() {
-          alert('ZOOM IN!');
+          //alert('ZOOM IN!');
         }
     },
 
@@ -58,6 +58,11 @@ export default {
 
 .panel-fade-enter-active, .panel-fade-leave-active {
   transition: opacity .4s
+}
+.pane-content {
+  overflow: hidden;
+  height: 200px;
+  vertical-align: center;
 }
 
 </style>

@@ -4,7 +4,12 @@
     <h1>Bem vindo ao alurapic web</h1>
 
     <div class="searchBar">
-      <label>🔍 <input name="filter" type="text" class="filtro" v-on:input="filtro = $event.target.value" placeholder="  Digite aqui para buscar..."></label>
+      <label>🔍 <input 
+      name="filter" 
+      type="text" 
+      class="filtro" 
+      v-on:input="filtro = $event.target.value" 
+      placeholder="  Digite aqui para buscar..."></label>
     </div> 
     <br/>
     <p v-if="filtro">Todos os resultados com "{{ filtro }}" estão sendo mostrados:</p>
@@ -13,8 +18,13 @@
     <ul>
       <li v-for="foto in fotosComFiltro" :key="foto.index">
         <al-panel :titulo="foto.titulo">
-          <img :src="foto.url" :alt="foto.titulo">
+          <img :src="foto.url" :alt="foto.titulo" v-zoomable.animate.reverse="1">
         </al-panel>
+
+          <div class="buttons-bar">
+            <router-link :to="{ name: 'alterar', params: { id: foto._id }}" class="detailsButton"><al-button  v-if="showDetailsButton" tipo="default" rotulo="DETALHES" @click="detailPhoto()"></al-button>
+            </router-link>
+          </div>
      
       </li>
     </ul>
@@ -26,13 +36,16 @@
 <script>
 // @ is an alias to /src
 import PhotoPanel from '@/components/PhotoPanel.vue';
+import Button from '@/components/Button.vue';
+import PhotoResource from '@/utils/PhotoResource.js'
 
 
 export default {
   name: 'home',
 
   components: {
-    'al-panel' : PhotoPanel
+    'al-panel' : PhotoPanel,
+    'al-button': Button
   },
 
   computed: {
@@ -56,16 +69,22 @@ export default {
         titulo:'doggo2'
       }],
       filtro: '',
+      showDetailsButton: true,
     }
   },
   created() { 
 
+    this.service = new PhotoResource(this.$resource)
     console.log(this.name + ' criado com sucesso. Populando...');
 
-    this.$http.get('http://localhost:3000/v1/fotos')
-      .then(res => res.json())
+    this.service.list()
       .then(x => this.fotos = x, err => console.log(err))
   
+  },
+  methods: {
+    detailPhoto() {
+
+    }
   }
 
 }
@@ -75,28 +94,44 @@ export default {
 
 p {
   margin: 0 0 10px;
-} 
+}
 
 .home {
-    flex: 1 0 auto;
+
 
 }
+
 .home ul{
-  display: inline-flexbox;
-  flex-direction: column;
+  display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
-  align-items: stretch;
+  justify-content: center;
+  align-content: space-between;
 
 }
 
 .home li {
-    flex: 1 0 auto;
-    display: inline-flex;
-    flex-direction: row;
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
     margin: 5px 5px;
-    width: 250px;
+    width: 265px;
     border: 1px solid #2c3e50;
     padding: 5px;
+    justify-content: space-between;
+    align-content: center;
+}
+
+  .buttons-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  
+    padding: 0 0;
+  }
+
+.detailsButton {
+  width: 80%
 }
 
 .searchBar{
@@ -110,5 +145,6 @@ p {
     margin-bottom: 10px;
     color: #2c3e50;
   }
+
 
 </style>
