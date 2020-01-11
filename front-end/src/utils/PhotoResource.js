@@ -31,7 +31,8 @@ get(id) {
 
 }
 
-edit() {}
-
+edit(photo) {
+    return this._resource.update({ id: photo._id }, photo);
+}
 
 }

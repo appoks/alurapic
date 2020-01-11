@@ -9,7 +9,7 @@ import './directives/Zoomable';
 Vue.config.productionTip = false;
 
 Vue.use(VueResource);
-Vue.http.options.root = 'http://localhost:3000'
+Vue.http.options.root = 'https://mighty-wildwood-73416.herokuapp.com'
 
 new Vue({
   router,

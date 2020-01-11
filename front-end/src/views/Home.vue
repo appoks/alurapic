@@ -29,6 +29,7 @@
       </li>
     </ul>
     <br/>
+  <p class="heading">Você pode aproximar as imagens dando um duplo clique sobre elas, ou escondê-las clicando no título</p>
 
   </div>
 </template>
@@ -135,15 +136,24 @@ p {
 }
 
 .searchBar{
-  display: -ms-inline-flexbox;
+  display: inline-flexbox;
   width: 95%
   }
 
-  .searchBar input {
+.searchBar input {
     width: 60%;
     max-width: 500px;
     margin-bottom: 10px;
     color: #2c3e50;
+  }
+
+.heading {
+  border: 1px solid #42b983;
+  padding: 10px;
+  display: inline-flexbox;
+  width: fit-content; /* WOW, esse eu curti ##VERIFICAR */ 
+  margin: 0 auto;
+  text-align: center;
   }
 
 

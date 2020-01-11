@@ -3,8 +3,8 @@
   <div>
 
     <h1>ALURAPIC - CADASTRO DE IMAGENS</h1>
-    <p v-if="photo"> Você está alterando a  foto de id "{{photo._id}}".</p>
-    <p v-if="!photo"> Você está cadastrando uma nova foto...</p>
+    <p v-if="photo._id && !message"> Você está alterando a  foto de id "{{photo._id}}".</p>
+    <p v-if="!photo._id && !message"> Você está cadastrando uma nova foto...</p>
     <p v-if="message"> {{ message }}</p>
     <br/>
 
@@ -45,7 +45,7 @@
       </form>
 
           <div class="button-group">
-            <al-button v-if="photo._id" tipo="default" rotulo="Alterar" class="edit-buttons"></al-button>
+            <al-button v-if="photo._id" tipo="default" rotulo="Alterar" class="edit-buttons" @click="save()"></al-button>
             <al-button v-if="photo._id" tipo="danger" :confirmar="true" rotulo="Remover" @click="remove()" class="edit-buttons"></al-button>
           </div>
 
@@ -79,11 +79,11 @@ export default {
 
       this.service.remove( this.photo._id )
         .then( () => {
-          this.message =  "foto removida com sucesso";
+          this.message =  "Foto removida com sucesso. Deseja cadastrar alguma nova?";
           this.photo = new Photo(); //deveria retornar ao home?
         }, err => {1
           console.log(err);
-          this.message = 'não foi possível remover a foto';
+          this.message = 'Não foi possível remover a foto!';
         }
       );
       /*
@@ -111,13 +111,28 @@ export default {
     },
     save(){
 
-      if (this.photo.title || this.photo.url){
-          this.service.add()
-          .then( 
-            () => this.photo = new Photo(),
-            err => console.log(err)
+      if (this.photo.title || this.photo.url)
+      {
+          if(this.photo._id) 
+          {
+            this.service.edit(this.photo)
+            .then( () => {
+              this.message =  "Foto alterada com sucesso. Deseja cadastrar uma nova?";
+              this.photo = new Photo(); //deveria retornar ao home?
+        }, err => {1
+          console.log(err);
+          this.message = 'Não foi possível alterar a foto!';
+        }
+            );
+          } else {
+            this.service.add(this.photo)
+            .then( () => {
+              this.message =  "Foto adicionada com sucesso! Deseja cadastrar outra?" 
+              this.photo = new Photo()
+              },
+              err => console.log(err)
           );
-    
+          }
           this.photo =  new Photo();
         }
 
