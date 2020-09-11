@@ -1,5 +1,8 @@
 # ALURAPIC
 
+<p align="center">
+  <img alt="Desktop e Mobile" src=".images/view-all.png" width="100%">
+</p>
 
 **ALURAPIC** é uma SPA desenvolvida em Vue.js como projeto de curso na [Alura](https://alura.com.br/).
 
