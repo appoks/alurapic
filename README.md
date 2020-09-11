@@ -1,14 +1,12 @@
 # ALURAPIC
 
-___
 
-**ALURAPIC**_** é uma SPA desenvolvida em Vue.js como projeto de curso na [Alura](https://alura.com.br/).
+**ALURAPIC** é uma SPA desenvolvida em Vue.js como projeto de curso na [Alura](https://alura.com.br/).
 
-___ 
 
 ## :rocket: Tech Stack
 
-- VueJS
+- Vue.js
 - Vuex
 - Vue Router
 - Vue Resource
@@ -28,10 +26,12 @@ O código base deste projeto foi desenvolvido seguindo a formação de Vue. Alé
 
 ## :wrench: ToDo
 
-:trophy: Este projeto já está finalizado!
+Este projeto já está finalizado! :trophy: 
+
+<br/>
  _____ 
 
-
+<br/>
 ## Obtendo o código fonte e executando
 
 Após fazer clonar o repositório, você pode executar o frontend rodando: 
