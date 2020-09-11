@@ -32,6 +32,7 @@ Este projeto já está finalizado! :trophy:
  _____ 
 
 <br/>
+
 ## Obtendo o código fonte e executando
 
 Após fazer clonar o repositório, você pode executar o frontend rodando: 
