@@ -29,7 +29,8 @@ O código base deste projeto foi desenvolvido seguindo a formação de Vue. Alé
 Este projeto já está finalizado! :trophy: 
 
 <br/>
- _____ 
+
+___
 
 <br/>
 
