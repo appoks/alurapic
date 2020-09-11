@@ -47,7 +47,8 @@ export default {
 <style scoped>
 
 .about {
-  width: 900px;
+  max-width: 900px;
+  width: 95%;
   margin: 0 auto;
   text-align: center;
 }
